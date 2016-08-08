@@ -3,13 +3,16 @@ var Button = React.createClass({
     return {counter: 0}
   },
   onClickHandler: function(){
-    this.setState({counter: this.state.counter+1})
+    this.setState({counter: this.state.counter+this.props.counter_of})
   },
   render: function() {
     return (
-      <button onClick={this.onClickHandler}>
-        {this.state.counter}
-      </button>
+      <div>
+        <button onClick={this.onClickHandler}>
+          +{this.props.counter_of}
+        </button>
+        <span>{this.state.counter}</span>
+      </div>
     );
   }
 });
@@ -19,7 +22,8 @@ var Main = React.createClass({
   render: function() {
     return (
       <div>
-        <Button />
+        <Button counter_of={1}/>
+        <Button counter_of={5}/>
       </div>
     );
   }
